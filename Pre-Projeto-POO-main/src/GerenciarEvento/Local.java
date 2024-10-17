@@ -1,39 +1,60 @@
 public class Local {
-    private int capacidade;
-    private double área;
+    
     private String nome;
-    private String endereço;
+    private String endereco;
+    private int capacidade;
+    private double area;
 
-    public Local(int capacidade, double área, String nome, String endereço) {
-        if(capacidade <= 0) throw new IllegalArgumentException("Capacidade deve ser maior que 0");
-        if(área <= 0) throw new IllegalArgumentException("Área deve ser maior que 0");
-        if(nome == null || nome.isEmpty()) throw new IllegalArgumentException("Nome não pode ser vazio");
-        if(endereço == null || endereço.isEmpty()) throw new IllegalArgumentException("Endereço não pode ser vazio");
-
-        this.capacidade = capacidade;
-        this.área = área;
+    public Local(int capacidade, double area, String nome, String endereco) {
         this.nome = nome;
-        this.endereço = endereço;
-    }
-
-    // Getters e Setters com validação
-    public void setCapacidade(int capacidade) {
-        if(capacidade <= 0) throw new IllegalArgumentException("Capacidade deve ser maior que 0");
+        this.endereco = endereco;
         this.capacidade = capacidade;
+        this.area = area;
     }
 
-    public void setÁrea(double área) {
-        if(área <= 0) throw new IllegalArgumentException("Área deve ser maior que 0");
-        this.área = área;
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
-        if(nome == null || nome.isEmpty()) throw new IllegalArgumentException("Nome não pode ser vazio");
-        this.nome = nome;
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nome não pode ser vazio ou nulo");
+        }
+        this.nome = nome.trim();
     }
 
-    public void setEndereço(String endereço) {
-        if(endereço == null || endereço.isEmpty()) throw new IllegalArgumentException("Endereço não pode ser vazio");
-        this.endereço = endereço;
+    public String getEndereco() {
+        return endereco;
     }
+
+    public void setEndereco(String endereco) {
+        if (endereco == null || endereco.trim().isEmpty()) {
+            throw new IllegalArgumentException("Endereço não pode ser vazio ou nulo");
+        }
+        this.endereco = endereco.trim();
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(int capacidade) {
+        if (capacidade <= 0) {
+            throw new IllegalArgumentException("Capacidade deve ser maior que 0");
+        }
+        this.capacidade = capacidade;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        if (area <= 0) {
+            throw new IllegalArgumentException("Área deve ser maior que 0");
+        }
+        this.area = area;
+    }
+
+    
 }

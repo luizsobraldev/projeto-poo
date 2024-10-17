@@ -7,15 +7,17 @@ public class Clinica {
     private List<Paciente> pacientes;
     private List<Medico> medicos;
     private List<Consulta> consultas;
+    private int proximoIdPaciente;
 
     public Clinica() {
         pacientes = new ArrayList<>();
         medicos = new ArrayList<>();
         consultas = new ArrayList<>();
+        proximoIdPaciente = 1;
     }
 
     public void cadastrarPaciente(Paciente paciente) {
-        if (buscarPaciente(paciente.getCpf()) == null) {  // Verifica se o paciente já existe
+        if (buscarPacientePorCPF(paciente.getCpf()) == null) {  // Verifica se o paciente já existe
             pacientes.add(paciente);
             System.out.println("Paciente cadastrado com sucesso.");
         } else {
@@ -65,7 +67,7 @@ public class Clinica {
         return true;
     }
 
-    public Paciente buscarPaciente(String cpf) {
+    public Paciente buscarPacientePorCPF(String cpf) {
         for (Paciente paciente : pacientes) {
             if (paciente.getCpf().equals(cpf)) {
                 return paciente;
@@ -74,14 +76,16 @@ public class Clinica {
         return null;
     }
 
-    // Método adicionado
-    private boolean consultaDentroDoIntervalo(Consulta consulta, String dataInicio, String dataFim) {
-        // Converte as strings de data em objetos Date para comparar
-        Date dataConsulta = new Date(consulta.getData());  // Supondo que getData() retorne uma String que pode ser convertida para Date
-        Date inicio = new Date(dataInicio);  // Converta a string dataInicio para Date
-        Date fim = new Date(dataFim);  // Converta a string dataFim para Date
+    public Medico buscarMedicoPorNome(String nome) {
+        for (Medico medico : medicos) {
+            if (medico.getNome().equals(nome)) {
+                return medico;
+            }
+        }
+        return null;
+    }
 
-        // Verifica se a data da consulta está entre a data de início e a data final
-        return !dataConsulta.before(inicio) && !dataConsulta.after(fim);
+    public int getProximoIdPaciente() {
+        return proximoIdPaciente++;
     }
 }
