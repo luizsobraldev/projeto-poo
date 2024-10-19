@@ -1,6 +1,7 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 
 public class Clinica {
 
@@ -58,6 +59,20 @@ public class Clinica {
         return consultasRelatorio;
     }
 
+    private boolean consultaDentroDoIntervalo(Consulta consulta, String dataInicio, String dataFim) {
+    try {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+        LocalDate dataConsulta = LocalDate.parse(consulta.getData(), formatter);
+        LocalDate inicio = LocalDate.parse(dataInicio, formatter);
+        LocalDate fim = LocalDate.parse(dataFim, formatter);
+       
+        return !dataConsulta.isBefore(inicio) && !dataConsulta.isAfter(fim);
+    } catch (Exception e) {
+        System.out.println("Erro ao processar as datas: " + e.getMessage());
+        return false;
+    }
+}
     private boolean verificarDisponibilidade(Medico medico, String data, String hora) {
         for (Consulta consulta : consultas) {
             if (consulta.getMedico().equals(medico) && consulta.getData().equals(data) && consulta.getHora().equals(hora)) {

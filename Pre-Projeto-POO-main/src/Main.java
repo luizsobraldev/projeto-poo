@@ -177,7 +177,7 @@ public class Main {
         System.out.println("Nome: " + evento.getNome());
         System.out.println("Data: " + evento.getData());
         System.out.println("Local: " + evento.getLocal().getNome());
-        System.out.println("Capacidade: " + evento.getCapacidade());
+        System.out.println("Capacidade: " + evento.getLocal().getCapacidade());
         System.out.println("Participantes inscritos: " + evento.getParticipantes().size());
     }
 
