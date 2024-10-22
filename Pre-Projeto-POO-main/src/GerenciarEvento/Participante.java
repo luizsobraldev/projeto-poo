@@ -1,25 +1,24 @@
 public class Participante {
-    private String inscrição;
+    private String inscricao;
     private String cpf;
     private Local local;
     private String data;
     private String hora;
 
-    public Participante(String inscrição, String cpf) {
-        // Validação de inscrição e CPF
-        if(inscrição == null || inscrição.isEmpty()) throw new IllegalArgumentException("Inscrição não pode ser vazia");
-        if(cpf == null || cpf.isEmpty() || cpf.length() != 11) throw new IllegalArgumentException("CPF inválido");
-        this.inscrição = inscrição;
+    public Participante(String inscricao, String cpf, Local local, String data, String hora) {
+        this.inscricao = inscricao;
         this.cpf = cpf;
+        this.local = local;
+        this.data = data;
+        this.hora = hora;
     }
 
-    public String getInscrição() {
-        return inscrição;
+    public String getInscricao() {
+        return inscricao;
     }
 
-    public void setInscrição(String inscrição) {
-        if(inscrição == null || inscrição.isEmpty()) throw new IllegalArgumentException("Inscrição não pode ser vazia");
-        this.inscrição = inscrição;
+    public void setInscricao(String inscricao) {
+        this.inscricao = inscricao;
     }
 
     public String getCpf() {
@@ -27,7 +26,6 @@ public class Participante {
     }
 
     public void setCpf(String cpf) {
-        if(cpf == null || cpf.isEmpty() || cpf.length() != 11) throw new IllegalArgumentException("CPF inválido");
         this.cpf = cpf;
     }
 
@@ -36,7 +34,6 @@ public class Participante {
     }
 
     public void setLocal(Local local) {
-        if(local == null) throw new IllegalArgumentException("Local não pode ser nulo");
         this.local = local;
     }
 

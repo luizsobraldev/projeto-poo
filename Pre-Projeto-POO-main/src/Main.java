@@ -7,7 +7,7 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static Clinica clinica = new Clinica();
     private static Evento evento;
-    private static Restaurante restaurante = new Restaurante(10000.0, 20);
+    private static Restaurante restaurante = new Restaurante(0.0, 0);
 
     public static void main(String[] args) {
         boolean executando = true;
@@ -167,7 +167,7 @@ public class Main {
         System.out.println("CPF do participante:");
         String cpfParticipante = scanner.nextLine();
 
-        Participante participante = new Participante(numeroInscricao, cpfParticipante);
+        Participante participante = new Participante(numeroInscricao, cpfParticipante, null, cpfParticipante, cpfParticipante);
         evento.adicionarParticipante(participante);
         System.out.println("Participante adicionado com sucesso.");
     }

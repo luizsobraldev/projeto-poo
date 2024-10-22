@@ -91,7 +91,7 @@ public class Evento {
     public void relatórioEvento() {
         if(!participantes.isEmpty()) {
             for (Participante p : participantes) {
-                System.out.println(p.getInscrição() + " - " + p.getCpf());
+                System.out.println(p.getInscricao() + " - " + p.getCpf());
             }
         } else {
             System.out.println("Nenhum participante inscrito.");
